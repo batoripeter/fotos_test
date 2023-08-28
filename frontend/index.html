@@ -7,10 +7,15 @@
     <title>Vite + TS</title>
   </head>
   <body class="mt-20 flex items-center justify-center">
-    <div id="app"></div>
-    <input type="text" id="elso">
-    <input type="text" id="masodik">
-    <button class="button hover:bg-yellow-200" id="load-button">Load</button>
+    <div id="app">
+      <nav id="navbar-container">
+        <input id="search-input" value="${searchValue}">
+        <button id="search-button">Search</button>
+      </nav>
+      <div id="loading-container"></div>
+      <div id="notification-container"></div>
+      <div id="images-container"></div>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
