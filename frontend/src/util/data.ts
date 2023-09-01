@@ -20,3 +20,23 @@ export const data = <T>(initialValue: T) => {
     subscribe
   }
 }
+
+/* const _fruit = data("alma")
+_fruit.subscribe(value => console.log(value))
+_fruit.subscribe(value => console.log("x"))
+
+_fruit.next("korte")
+_fruit.next("barack")
+
+// -----
+
+let fruit = "alma"
+console.log(fruit)
+console.log("x")
+
+fruit = "korte"
+console.log(fruit)
+
+fruit = "barack"
+console.log(fruit) */
+

@@ -1,6 +1,13 @@
+import 'dotenv/config'
 import express from "express"
 import cors from "cors"
 import { z } from "zod"
+
+const env = z.object({
+  HASURA_SECRET: z.string()
+}).parse(process.env)
+
+const adminSecret = env.HASURA_SECRET
 
 const server = express()
 server.use(cors())

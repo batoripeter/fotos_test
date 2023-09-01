@@ -36,7 +36,7 @@ type Response<Type> = {
   status: number
   success: true
 } | {
-  error: unknown
+  error: string
   status: number
   success: false
 }
