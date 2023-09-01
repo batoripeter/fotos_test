@@ -39,18 +39,19 @@ const start = async () => {
   isLoading.next(true)
   const response = await loadImages()
   isLoading.next(false)
-  if (!response)
-    return notificationText.next("Oops something happened")
-  images.next(response.map(img => ({ ...img, smallAmount: 0, largeAmount: 0 })))
+  if (!response.success)
+    return notificationText.next("" + response.error)
+  images.next(response.data.map(img => ({ ...img, smallAmount: 0, largeAmount: 0 })))
 }
 
 const search = async () => {
   isLoading.next(true)
   const response = await loadImages(searchInput.get())
   isLoading.next(false)
-  if (!response)
-    return notificationText.next("Oops something happened")
-  images.next(response.map(img => ({ ...img, smallAmount: 0, largeAmount: 0 })))
+  if (!response.success)
+    return notificationText.next("" + response.error)
+  const data = response.data
+  images.next(data.map(img => ({ ...img, smallAmount: 0, largeAmount: 0 })))
 }
 // ------------------------------ Mutation ------------------------------
 

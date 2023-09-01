@@ -7,6 +7,21 @@ server.use(cors())
 server.use(express.json())
 
 server.use((req, res, next) => {
+  // HTTP Request
+  // METHOD: get / post / put / delete
+  console.log(req.method) // get
+  // QUERY: ?name=valami&age=24
+  console.log(req.query) // req.query.name req.query.age - ZOD!
+  // HEADER: key-value
+  console.log(req.headers) // req.headers["content-type"]
+  // BODY: 
+  console.log(req.body) // req.body - json, formdata
+  // URL
+  console.log(req.url)  // https://akarmi.hu/barmi
+  // https://akarmi.hu/barmi/15
+  console.log(req.params) // https://akarmi.hu/barmi/:id -> req.params.id
+
+  
   console.log("Request arrived at " + new Date().toISOString())
   next()
 })

@@ -31,14 +31,24 @@ const validateImages = (response: AxiosResponse): ImageResponse | null => {
   return result.data
 }
 
-export const loadImages = async (title?: string) => {
+type Response<Type> = {
+  data: Type
+  status: number
+  success: true
+} | {
+  error: unknown
+  status: number
+  success: false
+}
+
+export const loadImages = async (title?: string): Promise<Response<ImageResponse>> => {
   const response = await getImages(title)
   if (!response)
-    return null
+    return { success: false, status: 0, error: "Network Error"  }
   if (response.status !== 200)
-    return null
+    return { success: false, status: response.status, error: "Server error"  }
   const data = validateImages(response)
   if (!data)
-    return null
-  return data
+    return { success: false, status: response.status, error: "Validation"  }
+  return { success: true, status: response.status, data }
 }
